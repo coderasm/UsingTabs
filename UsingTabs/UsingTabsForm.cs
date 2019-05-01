@@ -18,6 +18,7 @@ namespace UsingTabs
     public UsingTabsForm()
     {
       InitializeComponent();
+      //building fontstyle options
       var styleBoxItems = new SelectOption[]
       {
         new SelectOption { Key = "Regular", Value = 0},
@@ -29,6 +30,7 @@ namespace UsingTabs
       styleBox.Items.AddRange(styleBoxItems);
       styleBox.DisplayMember = "Key";
       styleBox.ValueMember = "Value";
+      //building fontfamily options
       var families = FontFamily.Families;
       var familyBoxItems = new SelectOption[FontFamily.Families.Length];
       for (int i = 0; i < families.Length; i++)
@@ -160,7 +162,7 @@ namespace UsingTabs
       displayLabel.Text = "Watch Out!";
       lengthValueLabel.Text = displayLabel.Text.Length.ToString();
     }
-
+    
     private void fontStyleChanged(object sender, EventArgs e)
     {
       var fontStyleBox = (ComboBox)sender;
@@ -189,6 +191,7 @@ namespace UsingTabs
       var checkBox = (CheckBox)sender;
       reversed = checkBox.Checked;
       var chars = displayLabel.Text.ToCharArray();
+      //reversing in-place
       for (int i = 0, j = chars.Length - 1; i < j; i++, j--)
       {
         chars[i] = displayLabel.Text[j];
@@ -213,11 +216,13 @@ namespace UsingTabs
       upperCased = !isChecked;
       lowerCased = !isChecked;
       displayLabel.Text = displayLabel.Text.ToLower();
+      //capitalize last character
       if (reversed) {
         var first = displayLabel.Text[displayLabel.Text.Length - 1].ToString().ToUpper();
         var remaining = displayLabel.Text.Substring(0, displayLabel.Text.Length - 1);
         displayLabel.Text = remaining + first;
       }
+      //capitalize first character
       else
       {
         var first = displayLabel.Text[0].ToString().ToUpper();

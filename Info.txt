@@ -1,0 +1,6 @@
+Added color options.
+Added font size options.
+Added message options.
+Added fontstyle and fontfamily options under Font tab.
+String can be reversed, capitalized, uppercased and lowercased under Process tab.
+Length of string is displayed under Process tab
